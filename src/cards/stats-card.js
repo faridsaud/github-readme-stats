@@ -61,6 +61,8 @@ const renderStatsCard = (stats = {}, options = { hide: [] }) => {
     hide_title = false,
     hide_border = false,
     hide_rank = false,
+    hide_total_stars = false,
+    hide_total_issues = false,
     include_all_commits = false,
     line_height = 25,
     title_color,
@@ -127,6 +129,14 @@ const renderStatsCard = (stats = {}, options = { hide: [] }) => {
       id: "contribs",
     },
   };
+
+  if(hide_total_stars){
+    delete STATS.stars;
+  }
+
+  if(hide_total_issues){
+    delete STATS.issues;
+  }
 
   const isLongLocale = ["fr", "pt-br", "es"].includes(locale) === true;
 
